@@ -1,0 +1,47 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <style>
+        .error {
+            display: block;
+            background: pink;
+            color: red;
+            text-align: center;
+            padding: 1rem;
+            animation: hide 3s forwards linear; 
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes hide {
+            0% {
+                opacity:1
+            }
+            50% {
+                opacity:1
+            }
+            100% {
+                opacity:0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="login-form" action="/login" method="POST">
+            <div class="form-control">
+                <label for="email">E-Mail</label>
+                <input type="email" name="email" id="email" value="<%= user.email %>">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="<%= user.password %>">
+            </div>
+            <button class="btn" type="submit">Login</button>
+            <p class="<%= loginError?'error':'hidden'%>">Error: wrong email or password</p>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>
